@@ -1,0 +1,19 @@
+{
+  "name": "atwork",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
+  },
+  "author": "Seweryn Zagajny",
+  "license": "ISC",
+  "dependencies": {
+    "core-js": "^3.36.1",
+    "lodash-es": "^4.17.21",
+    "regenerator-runtime": "^0.14.1"
+  },
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
+}
