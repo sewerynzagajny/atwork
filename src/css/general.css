@@ -22,8 +22,10 @@ Medium: 1.2
 -- Primary:  
 #0c4a6e
 
+--background-color::after #f3f3f3;
+
 -- Tints: 
-#e6fcf5
+
 
 -- Shades: 
 
@@ -32,12 +34,6 @@ Medium: 1.2
 -- Accents:
 -- Greys: 
 
-#343a40;
-#888
-#767676 (lightest grey allowed on #fff)
-#555
-#333
-#6f6f6f (lightest grey allowed on #fdf2e9)
 
 other
 
@@ -80,12 +76,14 @@ html {
 }
 
 body {
-  /* font-family: "EB Garamond", sans-serif; */
+  font-family: 'Cabin', sans-serif;
   line-height: 1;
   font-weight: 400;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: 'wdth' 100;
   color: #343a40;
-  /* color: #087f5b; */
-  /* Only works if there is nothing absolutely positioned in relation to body */
+  background-color: #f3f3f3;
   overflow-x: hidden;
 }
 
@@ -93,6 +91,13 @@ strong {
   font-weight: 500;
 }
 
-button {
-  /* font-family: "EB Garamond", sans-serif; */
+/**************************/
+/* GENERAL REUSABLE COMPONENT */
+/**************************/
+
+.container {
+  /* Standard 1140px */
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 3.2rem;
 }
