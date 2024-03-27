@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="./src/css/style.css" />
     <!-- <link rel="stylesheet" href="css/queries.css" /> -->
 
-    <script type="module" defer src="/src/js/script.js"></script>
+    <script type="module" defer src="./src/js/script.js"></script>
     <!-- <script defer src="js/cookies.js"></script> -->
 
     <title>AtWorks</title>
@@ -28,7 +28,7 @@
     <header class="header">
       <div class="welcome">Witaj Madzia!</div>
       <figure class="logo">
-        <img class="logo__img" alt="wPracy logo" src="./img/logo.png" />
+        <img class="logo__img" alt="wPracy logo" src="./src/img/logo.png" />
         <div class="logo__text">wPracy</div>
       </figure>
       <nav class="nav">
@@ -40,16 +40,38 @@
     </header>
     <main>
       <div class="container">
-        <div class="date__container"></div>
+        <div class="date__container">Data</div>
+        <div class="main__container grid grid--2-cols">
+          <div class="calendar">
+            <div class="month">
+              <i class="btn--prev"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="ionicon"
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    d="M321.94 98L158.82 237.78a24 24 0 000 36.44L321.94 414c15.57 13.34 39.62 2.28 39.62-18.22v-279.6c0-20.5-24.05-31.56-39.62-18.18z"
+                  /></svg
+              ></i>
+
+              <div>Marzec</div>
+              <i class="btn--next"></i>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="ionicon"
+                viewBox="0 0 512 512"
+              >
+                <path
+                  d="M190.06 414l163.12-139.78a24 24 0 000-36.44L190.06 98c-15.57-13.34-39.62-2.28-39.62 18.22v279.6c0 20.5 24.05 31.56 39.62 18.18z"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <div class="raport__list>">Raport</div>
+        </div>
       </div>
     </main>
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
   </body>
 </html>

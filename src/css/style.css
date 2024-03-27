@@ -7,7 +7,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.2rem 4.8rem;
-  margin-bottom: 6.4rem;
+  margin-bottom: 4.8rem;
 }
 
 .welcome {
@@ -44,5 +44,19 @@
   font-size: 2.4rem;
   color: #0c4a6e;
   font-weight: 800;
-  text-align: center;
+  text-align: justify;
+  margin-left: 34%;
+  margin-bottom: 4.8rem;
+}
+
+.month {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ionicon {
+  fill: #0c4a6e; /* Kolor wypełnienia */
+  width: 4rem; /* Szerokość */
+  height: 4rem; /* Wysokość */
 }
