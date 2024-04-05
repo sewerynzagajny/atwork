@@ -104,22 +104,25 @@ const initCalendar = function () {
     }
   });
 
+  daysEL.innerHTML = days;
+
   const daysInCalendarBefore = daysEL.children.length;
   console.log(daysInCalendarBefore);
-
-  nextDays = 14 - lastDay.getDay();
-  //next month
-  if (daysInCalendarBefore >= 35) {
-    nextDays = 7 - lastDay.getDay();
-  }
-  if (daysInCalendarBefore > 42) {
-    nextDays = 14 - lastDay.getDay();
-  }
+  console.log(lastDays);
 
   // nextDays = 14 - lastDay.getDay();
+  // //next month
+  // if (daysInCalendarBefore >= 35) {
+  //   nextDays = 7 - lastDay.getDay();
+  // }
+
+  nextDays = 14 - ((day - 1 + lastDays) % 14);
 
   const nextMonthDays = Array.from({ length: nextDays }, (_, i) => ++i);
   console.log(nextMonthDays);
+
+  if (daysInCalendarBefore + nextMonthDays.length === 43)
+    nextMonthDays.splice(-1);
   nextMonthDays.forEach(
     day => (days += `<div class='day next-date'>${day}</div>`)
   );
