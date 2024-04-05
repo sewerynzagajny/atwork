@@ -1,9 +1,9 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
-if (module.hot) {
-  module.hot.accept();
-}
+// if (module.hot) {
+//   module.hot.accept();
+// }
 
 // Data
 const dateContainerEL = document.querySelector('.date__container');
@@ -35,6 +35,7 @@ const dataEL = document.querySelector('.date__text');
 const daysEL = document.querySelector('.days');
 const prevEl = document.querySelector('.btn--prev');
 const nextEl = document.querySelector('.btn--next');
+const clearDays = document.querySelector('.days').innerHTML;
 
 const today = new Date();
 const optionDate = {
@@ -57,15 +58,15 @@ let year = today.getFullYear();
 //  function to add days
 
 const initCalendar = function () {
+  daysEL.insertAdjacentHTML('afterbegin', clearDays);
   // to get prev month days and current month all days and rem next month days
   const firstDay = new Date(year, month, 1);
   const lastDay = new Date(year, month + 1, 0);
   const prevLastDay = new Date(year, month, 0);
   const prevDays = prevLastDay.getDate();
-  const lastDate = lastDay.getDate();
+  const lastDays = lastDay.getDate();
   const day = firstDay.getDay();
-  const nextDays = 7 - lastDay.getDay();
-  console.log(day);
+  let nextDays;
 
   // Update date top of calendar
   dataEL.textContent = `${monthStr} ${year}`;
@@ -90,7 +91,7 @@ const initCalendar = function () {
 
   // cuurent month day
 
-  const currentMonthDays = Array.from({ length: lastDate }, (_, i) => ++i);
+  const currentMonthDays = Array.from({ length: lastDays }, (_, i) => ++i);
   currentMonthDays.forEach(day => {
     if (
       day === new Date().getDate() &&
@@ -103,9 +104,22 @@ const initCalendar = function () {
     }
   });
 
+  const daysInCalendarBefore = daysEL.children.length;
+  console.log(daysInCalendarBefore);
+
+  nextDays = 14 - lastDay.getDay();
   //next month
+  if (daysInCalendarBefore >= 35) {
+    nextDays = 7 - lastDay.getDay();
+  }
+  if (daysInCalendarBefore > 42) {
+    nextDays = 14 - lastDay.getDay();
+  }
+
+  // nextDays = 14 - lastDay.getDay();
 
   const nextMonthDays = Array.from({ length: nextDays }, (_, i) => ++i);
+  console.log(nextMonthDays);
   nextMonthDays.forEach(
     day => (days += `<div class='day next-date'>${day}</div>`)
   );
@@ -119,13 +133,14 @@ initCalendar();
 
 const prevMonth = function () {
   month--;
-  monthStr = new Intl.DateTimeFormat(navigator.language, {
-    month: optionDate.month,
-  }).format(new Date(year, month + 1, 0));
+
   if (month < 0) {
     month = 11;
     year--;
   }
+  monthStr = new Intl.DateTimeFormat(navigator.language, {
+    month: optionDate.month,
+  }).format(new Date(year, month + 1, 0));
   initCalendar();
 };
 
@@ -133,13 +148,14 @@ const prevMonth = function () {
 
 const nextMonth = function () {
   month++;
-  monthStr = new Intl.DateTimeFormat(navigator.language, {
-    month: optionDate.month,
-  }).format(new Date(year, month, 1));
+
   if (month > 11) {
     month = 0;
     year++;
   }
+  monthStr = new Intl.DateTimeFormat(navigator.language, {
+    month: optionDate.month,
+  }).format(new Date(year, month, 1));
   initCalendar();
 };
 
