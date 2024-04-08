@@ -36,6 +36,9 @@ const daysEL = document.querySelector('.days');
 const prevEl = document.querySelector('.btn--prev');
 const nextEl = document.querySelector('.btn--next');
 const clearDays = document.querySelector('.days').innerHTML;
+const dataInputEl = document.querySelector('.data-input');
+const btnGotoEl = document.querySelector('.btn__goto');
+const btnTodayEl = document.querySelector('.btn__today');
 
 const today = new Date();
 const optionDate = {
@@ -162,5 +165,54 @@ const nextMonth = function () {
   initCalendar();
 };
 
+const presentMonth = function () {
+  const today = new Date();
+  month = today.getMonth();
+  year = today.getFullYear();
+  monthStr = new Intl.DateTimeFormat(navigator.language, {
+    month: optionDate.month,
+  }).format(today);
+  initCalendar();
+};
+
 prevEl.addEventListener('click', prevMonth);
 nextEl.addEventListener('click', nextMonth);
+
+btnTodayEl.addEventListener('click', presentMonth);
+
+const pressEnter = function () {
+  return function (e) {
+    dataInputEl.value = dataInputEl.value.replace(/[^0-9.]/g, '');
+    if (dataInputEl.value.length === 2) dataInputEl.value += '.';
+    if (dataInputEl.value.length > 7)
+      dataInputEl.value = dataInputEl.value.slice(0, 7);
+
+    // if backspace pressed
+    if (e.key === 'Backspace') {
+      if (dataInputEl.value.length === 3)
+        dataInputEl.value = dataInputEl.value.slice(0, 2);
+    }
+    if (e.key === 'Enter') {
+      gotoDate();
+    }
+  };
+};
+
+dataInputEl.addEventListener('keyup', pressEnter());
+
+const gotoDate = function () {
+  const [monthArr, yearArr] = dataInputEl.value.split('.');
+  if (+monthArr > 0 && +monthArr < 13 && yearArr.length === 4) {
+    month = +monthArr - 1;
+    year = +yearArr;
+    monthStr = new Intl.DateTimeFormat(navigator.language, {
+      month: optionDate.month,
+    }).format(new Date(year, month));
+    initCalendar();
+    dataInputEl.value = '';
+  } else alert('Zła data');
+};
+
+btnGotoEl.addEventListener('click', gotoDate);
+
+// btnGotoEl.addEventListener('submit');
