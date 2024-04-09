@@ -84,10 +84,17 @@ const initCalendar = function () {
   //   days +=`<div class="day prev-date">${prevDays - x + 1}</div>`;
   //   console.log(days);
   // }
+
+  // const prevMonthDays = Array.from(
+  //   { length: day - 1 },
+  //   (_, i) => prevDays - i
+  // ).reverse();
+
   const prevMonthDays = Array.from(
-    { length: day - 1 },
-    (_, i) => prevDays - i
+    { length: day === 0 ? 6 : day - 1 }, // Jeśli pierwszy dzień miesiąca to niedziela, to poprzednie miesiąca jest 6 dni; w przeciwnym razie jest to wartość day-1.
+    (_, i) => prevDays - (day === 0 ? 6 - i : day - 1 - i) // Jeśli pierwszy dzień miesiąca to niedziela, to zaczynamy od prevDays - (6 - i), w przeciwnym razie od prevDays - (day - 1 - i).
   ).reverse();
+
   prevMonthDays.forEach(
     prevDay => (days += `<div class="day prev-date">${prevDay}</div>`)
   );
@@ -113,13 +120,13 @@ const initCalendar = function () {
   console.log(daysInCalendarBefore);
   console.log(lastDays);
 
-  // nextDays = 14 - lastDay.getDay();
-  // //next month
-  // if (daysInCalendarBefore >= 35) {
-  //   nextDays = 7 - lastDay.getDay();
-  // }
+  nextDays = 14 - lastDay.getDay();
+  //next month
+  if (daysInCalendarBefore >= 35) {
+    nextDays = 7 - lastDay.getDay();
+  }
 
-  nextDays = 14 - ((day - 1 + lastDays) % 14);
+  // nextDays = 14 - ((day - 1 + lastDays) % 14);
 
   const nextMonthDays = Array.from({ length: nextDays }, (_, i) => ++i);
   console.log(nextMonthDays);
