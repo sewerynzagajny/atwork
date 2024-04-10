@@ -106,7 +106,7 @@ strong {
 .grid {
   display: grid;
   row-gap: 9.6rem;
-  column-gap: 6.4rem;
+  column-gap: 1.6rem;
 
   /* margin-bottom: 9.6rem; */
 }
@@ -120,6 +120,7 @@ strong {
 }
 .grid--2-cols {
   grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 0.8fr auto;
 }
 
 .grid--3-cols {
