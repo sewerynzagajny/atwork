@@ -242,15 +242,21 @@
 }
 
 .raport__container {
-  padding: 1.6rem 0;
+  padding: 1.6rem 0 0 0;
   background-color: #0c4a6e;
   color: #fff;
   border-radius: 2rem;
-  overflow-y: scroll;
+  overflow-y: hidden;
   font-size: 1.8rem;
   display: flex;
   flex-direction: column;
   /* gap: 1rem; */
+}
+
+.raport__container-main {
+  margin-left: 1rem;
+  overflow-y: scroll;
+  /* height: 80%; */
 }
 
 .raport__container-list {
@@ -262,7 +268,8 @@
   transition: all 0.2s;
 }
 
-.raport__container-list:hover {
+.raport__container-list:hover,
+.raport__container-summary:hover {
   background-color: #08344d;
 }
 
@@ -301,4 +308,80 @@
 
 .icon-btn {
   cursor: pointer;
+}
+
+.raport__container-summary {
+  border-top: solid 0.1rem #fff;
+  padding: 0 2rem;
+  padding-top: 1.6rem;
+  transition: all 0.2s;
+  font-weight: 800;
+
+  /* overflow-y: scroll; */
+}
+
+.raport__container-list-summary {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.6rem;
+  margin-left: 0.5rem;
+}
+
+.raport__container-list-summary-vacation {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.6rem;
+  margin-left: 0.5rem;
+}
+
+.raport__list-deatails-summary {
+  display: flex;
+  gap: 1.6rem;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+.raport-text-sum {
+  width: 9.5rem;
+}
+
+.raport-earnings-sum {
+  width: 5.5rem;
+}
+
+.raport__list-deatails-sum {
+  margin-right: 4.6rem;
+}
+
+/* Kolor samego paska przewijania */
+.raport__container-main::-webkit-scrollbar {
+  width: 1rem; /* Szerokość paska przewijania */
+}
+
+/* Kolor obszaru przewijania */
+.raport__container-main::-webkit-scrollbar-track {
+  background: #0c4a6e; /* Kolor tła obszaru przewijania */
+  transition: all 0.2s;
+}
+
+/* Kolor samego suwaka przewijania */
+.raport__container-main::-webkit-scrollbar-thumb {
+  background: #08344d; /* Kolor suwaka przewijania */
+}
+
+/* Stylowanie suwaka przewijania po najechaniu myszą */
+.raport__container-main::-webkit-scrollbar-thumb:hover {
+  background: #062537; /* Kolor suwaka przewijania po najechaniu myszą */
+}
+.raport__container-main::-webkit-scrollbar-button {
+  background-color: #ccc; /* Kolor tła przycisku */
+  border: 1px solid #999; /* Styl obramowania przycisku */
+  border-radius: 0.3rem; /* Promień zaokrąglenia przycisku */
+}
+
+.raport__container-main::-webkit-scrollbar-button:hover {
+  background-color: #999; /* Kolor tła przycisku po najechaniu myszką */
 }
